@@ -1,0 +1,35 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  //grid-template-columns: repeat(3, 1fr);
+  //grid-template-rows: auto auto; // можно не задавать это свойство так как оно применится автоматически
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(25rem, 1fr)
+  ); // минимальная ширина должна быть между 25rem и 1fr и колонок создаетс столько сколько поместится в контейнер
+  grid-gap: 6rem;
+  align-items: start; //так как текст в колонках разного размера необходима это свойство поставить в старт. По умолчанию stretch
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    //лучше заполнить картинку на 2 клетки вниз чтобы высота иконки не увеличивала правую клетку с текстом
+    //grid-row: 1 / -1; // -1 это end explicit grid line/ but don't define it
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+  }
+  &__text {
+    font-size: 1.7rem;
+  }
+}
